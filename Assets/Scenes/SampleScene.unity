@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 1099747176}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -526,12 +526,12 @@ PrefabInstance:
     - target: {fileID: 3746367265029543196, guid: 863babd8e8a514e4984a85ebd60978a7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.29324386
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3746367265029543196, guid: 863babd8e8a514e4984a85ebd60978a7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8082426
+      value: -0.77
       objectReference: {fileID: 0}
     - target: {fileID: 3746367265029543196, guid: 863babd8e8a514e4984a85ebd60978a7,
         type: 3}
@@ -582,6 +582,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ellen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056560183655541109, guid: 863babd8e8a514e4984a85ebd60978a7,
+        type: 3}
+      propertyPath: movement_speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4056560183655541109, guid: 863babd8e8a514e4984a85ebd60978a7,
+        type: 3}
+      propertyPath: jump_force
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9069411787050155043, guid: 863babd8e8a514e4984a85ebd60978a7,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.53975475
+      objectReference: {fileID: 0}
+    - target: {fileID: 9069411787050155043, guid: 863babd8e8a514e4984a85ebd60978a7,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.2398684
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 863babd8e8a514e4984a85ebd60978a7, type: 3}
