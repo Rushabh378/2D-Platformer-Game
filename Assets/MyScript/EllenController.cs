@@ -8,16 +8,19 @@ public class EllenController : MonoBehaviour
     bool jump = false;
     [SerializeField]
     float jump_force = 5f;
+    [SerializeField]
+    float speed = 5f;
     bool crouch = false;
+    bool onground = false;
     Animator animator;
-    Rigidbody2D rigidbody;
+    Rigidbody2D rigid;
     CapsuleCollider2D capsuleCollider;
     
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigid = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
@@ -37,12 +40,14 @@ public class EllenController : MonoBehaviour
         transform.localScale = scale;
 
         //jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && onground == true)
         {
-            rigidbody.velocity = Vector2.up * jump_force;//new Vector2(rigidbody.velocity.x, jump_force);
+            rigid.velocity = Vector2.up * jump_force; //new Vector2(rigidbody.velocity.x, jump_force);
             jump = true;
-        }  
+            onground = false;
+        }
         animator.SetBool("jump", jump);
+
 
         //crouch
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -59,13 +64,19 @@ public class EllenController : MonoBehaviour
             
         animator.SetBool("crouch", crouch);
     }
-
+    private void FixedUpdate()
+    {
+        Vector2 position = transform.position;
+        position.x += movement_speed * speed * Time.fixedDeltaTime;
+        transform.position = position;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            //Debug.Log("ellen collided ground");
+            Debug.Log("ellen collided ground");
             jump = false;
+            onground = true;
         }
     }
 }
