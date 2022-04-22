@@ -66,15 +66,17 @@ public class EllenController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Vector2 position = transform.position;
-        position.x += movement_speed * speed * Time.fixedDeltaTime;
-        transform.position = position;
+        if (!crouch)
+        {
+            Vector2 position = transform.position;
+            position.x += movement_speed * speed * Time.fixedDeltaTime;
+            transform.position = position;
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("ellen collided ground");
             jump = false;
             onground = true;
         }
