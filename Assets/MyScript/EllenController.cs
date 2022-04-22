@@ -10,14 +10,14 @@ public class EllenController : MonoBehaviour
     float jump_force = 5f;
     bool crouch = false;
     Animator animator;
-    Rigidbody2D rigidbody;
+    Rigidbody2D rb;
     CapsuleCollider2D capsuleCollider;
     
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
@@ -39,7 +39,7 @@ public class EllenController : MonoBehaviour
         //jump
         if (Input.GetButtonDown("Jump"))
         {
-            rigidbody.velocity = Vector2.up * jump_force;//new Vector2(rigidbody.velocity.x, jump_force);
+            rb.velocity = Vector2.up * jump_force;//new Vector2(rigidbody.velocity.x, jump_force);
             jump = true;
         }  
         animator.SetBool("jump", jump);

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7069431547261053137}
   - component: {fileID: 403880443222568196}
   - component: {fileID: 9069411787050155043}
-  - component: {fileID: 4056560183655541109}
+  - component: {fileID: 136795565951091737}
   m_Layer: 0
   m_Name: Ellen
   m_TagString: Untagged
@@ -166,7 +166,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5410436, y: 1.349329}
   m_EdgeRadius: 0
---- !u!114 &4056560183655541109
+--- !u!114 &136795565951091737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,6 +175,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3746367265029543199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b48a7e75c929448827274b9e24a46e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f90ae53039a27d4babbe6270a78f06f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
