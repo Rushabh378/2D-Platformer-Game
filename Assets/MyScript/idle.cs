@@ -15,7 +15,10 @@ public class idle : IControl
             controller.switchState(controller.run);
         }
 
-        controller.anyToJump();
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            controller.switchState(controller.crouch);
+        }
     }
     public void collisionState(Controller2D controller, Collision2D collision)
     {

@@ -17,14 +17,7 @@ public class Jump : IControl
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            if (controller.movement_speed == 0)
-            {
-                controller.switchState(controller.idle);
-            }
-            else
-            {
-                controller.switchState(controller.run);
-            }
+            controller.idleOrRun();
         }
     }
 }

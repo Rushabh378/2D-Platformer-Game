@@ -15,7 +15,7 @@ public class Controller2D : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rb;
     [HideInInspector]
-    CapsuleCollider2D capsuleCollider;
+    public CapsuleCollider2D capsuleCollider;
 
     public float jump_force = 5f;
     [HideInInspector]
@@ -40,6 +40,7 @@ public class Controller2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anyToJump();
         currentState.updateState(this);
     }
 
@@ -52,13 +53,22 @@ public class Controller2D : MonoBehaviour
         }
         currentState.collisionState(this, collision);
     }
-
     public void switchState(IControl state)
     {
         currentState = state;
         currentState.enterState(this);
     }
-
+    public void idleOrRun()
+    {
+        if (movement_speed == 0)
+        {
+            switchState(idle);
+        }
+        else
+        {
+            switchState(run);
+        }
+    }
     public void anyToJump()
     {
         //if player jumps
