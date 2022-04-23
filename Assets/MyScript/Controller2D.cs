@@ -15,13 +15,14 @@ public class Controller2D : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rb;
     [HideInInspector]
-    public CapsuleCollider2D capsuleCollider;
+    CapsuleCollider2D capsuleCollider;
 
     public float jump_force = 5f;
     [HideInInspector]
     public float movement_speed;
     [HideInInspector]
     public bool bool_jump = false;
+    public float speed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,15 +40,16 @@ public class Controller2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if player jumps
-        if (Input.GetButtonDown("Jump"))
-            switchState(jump);
-            
         currentState.updateState(this);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            //Debug.Log("ellen collided ground");
+            animator.SetBool("jump", false);
+        }
         currentState.collisionState(this, collision);
     }
 
@@ -55,5 +57,12 @@ public class Controller2D : MonoBehaviour
     {
         currentState = state;
         currentState.enterState(this);
+    }
+
+    public void anyToJump()
+    {
+        //if player jumps
+        if (Input.GetButtonDown("Jump"))
+            switchState(jump);
     }
 }

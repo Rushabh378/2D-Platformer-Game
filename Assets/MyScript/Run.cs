@@ -9,7 +9,6 @@ public class Run : IControl
     public void updateState(Controller2D controller)
     {
         // taking input for ellen movement and animation..
-        controller.animator.SetFloat("speed", Mathf.Abs(controller.movement_speed));
         controller.movement_speed = Input.GetAxis("Horizontal");
 
         //animating and flippping ellen according to value.
@@ -20,13 +19,21 @@ public class Run : IControl
             scale.x = Mathf.Abs(scale.x);
         controller.transform.localScale = scale;
 
-        if(controller.movement_speed == 0)
+        controller.animator.SetFloat("speed", Mathf.Abs(controller.movement_speed));
+
+        Vector2 position = controller.transform.position;
+        position.x += controller.movement_speed * controller.speed * Time.deltaTime;
+        controller.transform.position = position;
+
+        if (controller.movement_speed == 0)
         {
             controller.switchState(controller.idle);
         }
+
+        controller.anyToJump();
     }
     public void collisionState(Controller2D controller, Collision2D collision)
     {
-
+        
     }
 }

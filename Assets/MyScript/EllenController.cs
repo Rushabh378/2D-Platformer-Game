@@ -19,6 +19,7 @@ public class EllenController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+  
     }
 
     // Update is called once per frame
