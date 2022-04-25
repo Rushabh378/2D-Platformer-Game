@@ -47,7 +47,7 @@ public class EllenController : MonoBehaviour
         //jump
         if (Input.GetButtonDown("Jump") && onground == true)
         {
-            rigid.velocity = Vector2.up * jump_force; //new Vector2(rigidbody.velocity.x, jump_force);
+            rigid.velocity = Vector2.up * jump_force; 
             jump = true;
             onground = false;
         }
