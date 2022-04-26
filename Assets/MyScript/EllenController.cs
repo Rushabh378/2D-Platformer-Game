@@ -12,7 +12,7 @@ public class EllenController : MonoBehaviour
     float speed = 5f;
     bool crouch = false;
     bool onground = false;
-    
+
     //for crouch
     Vector2 size;
     Vector2 offset;
@@ -20,7 +20,7 @@ public class EllenController : MonoBehaviour
     Animator animator;
     Rigidbody2D rigid;
     CapsuleCollider2D capsuleCollider;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,14 +40,14 @@ public class EllenController : MonoBehaviour
         Vector2 scale = transform.localScale;
         if (movementSpeed < 0)
             scale.x = -1f * Mathf.Abs(scale.x);
-        else if(movementSpeed > 0)
+        else if (movementSpeed > 0)
             scale.x = Mathf.Abs(scale.x);
         transform.localScale = scale;
 
         //jump
         if (Input.GetButtonDown("Jump") && onground == true)
         {
-            rigid.velocity = Vector2.up * jump_force; 
+            rigid.velocity = Vector2.up * jump_force;
             jump = true;
             onground = false;
         }
@@ -61,9 +61,9 @@ public class EllenController : MonoBehaviour
             //capsuleCollider.enabled = false;
             size = capsuleCollider.size;
             offset = capsuleCollider.offset;
-            capsuleCollider.size = new Vector2(capsuleCollider.size.x,1.3f);
-            capsuleCollider.offset = new Vector2(capsuleCollider.offset.x,0.6f);
-        }   
+            capsuleCollider.size = new Vector2(capsuleCollider.size.x, 1.3f);
+            capsuleCollider.offset = new Vector2(capsuleCollider.offset.x, 0.6f);
+        }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             crouch = false;
@@ -71,7 +71,7 @@ public class EllenController : MonoBehaviour
             capsuleCollider.size = size;
             capsuleCollider.offset = offset;
         }
-            
+
         animator.SetBool("crouch", crouch);
     }
     private void FixedUpdate()

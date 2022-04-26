@@ -5,14 +5,12 @@ using UnityEngine;
 public class DeathArea : MonoBehaviour
 {
     public GameObject spawnArea;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("you died");
-            //collision.transform = spawnArea.transform;
-            Time.timeScale = 0;
+            collision.gameObject.transform.position = spawnArea.transform.position;
         }
     }
 }
