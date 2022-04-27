@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3746367265029543198}
   - component: {fileID: 7069431547261053137}
   - component: {fileID: 403880443222568196}
-  - component: {fileID: 9069411787050155043}
   - component: {fileID: 4056560183655541109}
   m_Layer: 0
   m_Name: Ellen
@@ -123,7 +122,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &403880443222568196
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,39 +132,13 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3746367265029543199}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c95ef736b367e804caa30c80737fc222, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01617819, y: 0.97655165}
-  m_Size: {x: 0.5713006, y: 2.1059878}
+  m_Offset: {x: 0.01617819, y: 0.95}
+  m_Size: {x: 0.5713006, y: 2.15}
   m_Direction: 0
---- !u!61 &9069411787050155043
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3746367265029543199}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.021861374, y: 0.59448504}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.42, y: 0.1}
-    oldSize: {x: 3.7534883, y: 2.8325582}
-    newSize: {x: 3.7534883, y: 2.8325582}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5410436, y: 1.349329}
-  m_EdgeRadius: 0
 --- !u!114 &4056560183655541109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,3 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b48a7e75c929448827274b9e24a46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jump_force: 5
+  speed: 5
