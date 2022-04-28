@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EllenController : MonoBehaviour
 {
     float movementSpeed;
     bool jump = false;
     [SerializeField]
-    float jump_force = 5f;
+    float jump_force = 6f;
     [SerializeField]
     float speed = 5f;
     bool crouch = false;
     bool onground = false;
+    bool facingRight = true;
 
     //for crouch
     Vector2 size;
@@ -20,6 +22,7 @@ public class EllenController : MonoBehaviour
     Animator animator;
     Rigidbody2D rigid;
     CapsuleCollider2D capsuleCollider;
+    public TextMeshPro text;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +40,21 @@ public class EllenController : MonoBehaviour
         animator.SetFloat("speed", Mathf.Abs(movementSpeed));
 
         //animating and flippping ellen according to value.
-        Vector2 scale = transform.localScale;
-        if (movementSpeed < 0)
-            scale.x = -1f * Mathf.Abs(scale.x);
-        else if (movementSpeed > 0)
-            scale.x = Mathf.Abs(scale.x);
-        transform.localScale = scale;
+        if (facingRight)
+        {
+            if(movementSpeed < 0)
+            {
+                flip();
+            }
+        }
+        else
+        {
+            if(movementSpeed > 0)
+            {
+                flip();
+            }
+        }
+            
 
         //jump
         if (Input.GetButtonDown("Jump") && onground == true)
@@ -91,5 +103,15 @@ public class EllenController : MonoBehaviour
             jump = false;
             onground = true;
         }
+    }
+    void flip()
+    {
+        transform.Rotate(0f, 180, 0f);
+        facingRight = !facingRight;
+    }
+
+    void getDamage()
+    {
+
     }
 }
