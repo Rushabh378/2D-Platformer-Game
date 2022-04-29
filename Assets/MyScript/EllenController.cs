@@ -22,7 +22,8 @@ public class EllenController : MonoBehaviour
     Animator animator;
     Rigidbody2D rigid;
     CapsuleCollider2D capsuleCollider;
-    public TextMeshPro text;
+    public TextMeshProUGUI text;
+    //public TextMeshPro text;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class EllenController : MonoBehaviour
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        //text.enabled = false;
     }
 
     // Update is called once per frame
@@ -104,6 +106,13 @@ public class EllenController : MonoBehaviour
             onground = true;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            getDamage();
+        }
+    }
     void flip()
     {
         transform.Rotate(0f, 180, 0f);
@@ -112,6 +121,6 @@ public class EllenController : MonoBehaviour
 
     void getDamage()
     {
-
+        text.enabled = true;
     }
 }

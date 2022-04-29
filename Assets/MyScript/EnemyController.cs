@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
             Debug.DrawRay(Detector.transform.position, Detector.transform.right, Color.green, sightLength);
         }
 
-        Vector2 position = transform.position;
+        Vector2 position =transform.position;
         position.x += direction * movementSpeed * Time.fixedDeltaTime;
         transform.position = position;
         animator.SetFloat("speed", movementSpeed);
