@@ -123,7 +123,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &403880443222568196
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,12 +133,12 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3746367265029543199}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c95ef736b367e804caa30c80737fc222, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01617819, y: 0.97655165}
-  m_Size: {x: 0.5713006, y: 2.1059878}
+  m_Offset: {x: 0.01617819, y: 0.95}
+  m_Size: {x: 0.5713006, y: 2.15}
   m_Direction: 0
 --- !u!61 &9069411787050155043
 BoxCollider2D:
@@ -178,3 +178,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f90ae53039a27d4babbe6270a78f06f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jump_force: 5
+  speed: 5
