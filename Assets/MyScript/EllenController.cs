@@ -18,15 +18,16 @@ public class EllenController : MonoBehaviour
     Vector2 offset;
 
     Animator animator;
-    Rigidbody2D rigid;
+    Rigidbody2D rb;
     CapsuleCollider2D capsuleCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        rigid = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+  
     }
 
     // Update is called once per frame
@@ -47,7 +48,7 @@ public class EllenController : MonoBehaviour
         //jump
         if (Input.GetButtonDown("Jump") && onground == true)
         {
-            rigid.velocity = Vector2.up * jump_force;
+            rb.velocity = Vector2.up * jump_force;
             jump = true;
             onground = false;
         }
