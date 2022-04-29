@@ -8,9 +8,7 @@ public class idle : IControl
     }
     public void updateState(Controller2D controller)
     {
-        controller.movement_speed = Input.GetAxis("Horizontal");
-        controller.animator.SetFloat("speed", Mathf.Abs(controller.movement_speed));
-        if (controller.movement_speed != 0)
+        if (Input.GetAxis("Horizontal") != 0)
         {
             controller.switchState(controller.run);
         }

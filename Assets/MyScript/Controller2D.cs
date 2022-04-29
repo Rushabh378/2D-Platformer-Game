@@ -23,6 +23,7 @@ public class Controller2D : MonoBehaviour
     [HideInInspector]
     public bool bool_jump = false;
     public float speed = 5f;
+    public bool facing_right = true;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,12 @@ public class Controller2D : MonoBehaviour
         }
         currentState.collisionState(this, collision);
     }
+    public void movement()
+    {
+        Vector2 position = transform.position;
+        position.x += movement_speed * speed * Time.deltaTime;
+        transform.position = position;
+    }
     public void switchState(IControl state)
     {
         currentState = state;
@@ -74,5 +81,10 @@ public class Controller2D : MonoBehaviour
         //if player jumps
         if (Input.GetButtonDown("Jump"))
             switchState(jump);
+    }
+    public void flip()
+    {
+        transform.Rotate(0f, 180, 0f);
+        facing_right = !facing_right;
     }
 }

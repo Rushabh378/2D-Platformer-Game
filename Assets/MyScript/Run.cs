@@ -10,20 +10,25 @@ public class Run : IControl
     {
         // taking input for ellen movement and animation..
         controller.movement_speed = Input.GetAxis("Horizontal");
-
-        //animating and flippping ellen according to value.
-        Vector2 scale = controller.transform.localScale;
-        if (controller.movement_speed < 0)
-            scale.x = -1f * Mathf.Abs(scale.x);
-        else if (controller.movement_speed > 0)
-            scale.x = Mathf.Abs(scale.x);
-        controller.transform.localScale = scale;
-
         controller.animator.SetFloat("speed", Mathf.Abs(controller.movement_speed));
 
-        Vector2 position = controller.transform.position;
-        position.x += controller.movement_speed * controller.speed * Time.deltaTime;
-        controller.transform.position = position;
+        //animating and flippping ellen according to value.
+        if (controller.facing_right)
+        {
+            if (controller.movement_speed < 0)
+            {
+                controller.flip();
+            }
+        }
+        else
+        {
+            if (controller.movement_speed > 0)
+            {
+                controller.flip();
+            }
+        }
+
+        controller.movement();
 
         if (controller.movement_speed == 0)
         {
