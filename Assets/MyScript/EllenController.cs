@@ -22,8 +22,7 @@ public class EllenController : MonoBehaviour
     Animator animator;
     Rigidbody2D rigid;
     CapsuleCollider2D capsuleCollider;
-    public TextMeshProUGUI text;
-    //public TextMeshPro text;
+    Health health;
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +30,8 @@ public class EllenController : MonoBehaviour
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-        //text.enabled = false;
+        health = GetComponent<Health>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -56,7 +54,6 @@ public class EllenController : MonoBehaviour
                 flip();
             }
         }
-            
 
         //jump
         if (Input.GetButtonDown("Jump") && onground == true)
@@ -85,7 +82,6 @@ public class EllenController : MonoBehaviour
             capsuleCollider.size = size;
             capsuleCollider.offset = offset;
         }
-
         animator.SetBool("crouch", crouch);
     }
     private void FixedUpdate()
@@ -96,6 +92,8 @@ public class EllenController : MonoBehaviour
             position.x += movementSpeed * speed * Time.fixedDeltaTime;
             transform.position = position;
         }
+        //if player hurt is true.
+        //animator.SetBool("hurt", false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -105,22 +103,25 @@ public class EllenController : MonoBehaviour
             jump = false;
             onground = true;
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.GetComponent<EnemyController>() == true)
         {
-            getDamage();
+            //Debug.Log("ellen fot damaged.");
+            gotDamaged();
         }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //Debug.Log("collision exited");
+        animator.SetBool("hurt", false);
     }
     void flip()
     {
         transform.Rotate(0f, 180, 0f);
         facingRight = !facingRight;
     }
-
-    void getDamage()
+    void gotDamaged()
     {
-        text.enabled = true;
+        animator.SetBool("hurt", true);
+        health.healthDrop();
     }
 }

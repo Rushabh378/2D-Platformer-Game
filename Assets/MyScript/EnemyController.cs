@@ -22,10 +22,18 @@ public class EnemyController : MonoBehaviour
         RaycastHit2D hit2D = Physics2D.Raycast(Detector.transform.position, Detector.transform.right, sightLength);
         if (hit2D)
         {
-            Debug.DrawRay(Detector.transform.position, Detector.transform.right, Color.yellow, sightLength);
-            //Debug.Log("chomper cought something");
-            direction *= -1f;
-            flip();
+            if(hit2D.collider.name == "Ellen")
+            {
+                Debug.DrawRay(Detector.transform.position, Detector.transform.right, Color.red, sightLength);
+                movementSpeed = 3;
+            }
+            else
+            {
+                Debug.DrawRay(Detector.transform.position, Detector.transform.right, Color.yellow, sightLength);
+                direction *= -1f;
+                flip();
+            }
+            
         }
         else
         {
