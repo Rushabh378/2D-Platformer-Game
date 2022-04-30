@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MySceneManager : MonoBehaviour
+public class MySceneManager
 {
-    public float timer = 5f;
-    float timeElapsed;
     public void reload()
     {
-        timeElapsed += Time.deltaTime;
-        if (timeElapsed > timer)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

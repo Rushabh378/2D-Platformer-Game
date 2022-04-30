@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class EllenController : MonoBehaviour
 {
@@ -21,8 +22,7 @@ public class EllenController : MonoBehaviour
     Rigidbody2D rigid;
     CapsuleCollider2D capsuleCollider;
     Health health;
-    [SerializeField]
-    MySceneManager sceneManager;
+    MySceneManager sceneManager = new MySceneManager();
 
     // Start is called before the first frame update
     void Start()
@@ -92,8 +92,6 @@ public class EllenController : MonoBehaviour
             position.x += movementSpeed * speed * Time.fixedDeltaTime;
             transform.position = position;
         }
-        //if player hurt is true.
-        //animator.SetBool("hurt", false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -106,7 +104,7 @@ public class EllenController : MonoBehaviour
         if (collision.gameObject.GetComponent<EnemyController>() == true)
         {
             //Debug.Log("ellen fot damaged.");
-            gotDamaged();
+            StartCoroutine(GotDamaged());
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -119,15 +117,15 @@ public class EllenController : MonoBehaviour
         transform.Rotate(0f, 180, 0f);
         facingRight = !facingRight;
     }
-    void gotDamaged()
+    IEnumerator GotDamaged()
     {
         animator.SetBool("hurt", true);
         bool death = health.healthDrop();
         if (death)
         {
             animator.SetBool("death", death); //if no health points available, dies.
-            //sceneManager.reload();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            yield return new WaitForSeconds(3.0f);
+            sceneManager.reload();
         }
     }
 }
