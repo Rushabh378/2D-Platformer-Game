@@ -3,15 +3,23 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public Image healthUI;
+    public Image[] healthUI = new Image[3];
     Animator healthAnimator;
+    int N = 0;
+    public bool healthDrop()
+    {
+        if (N < 3)
+        {
+            //setting healthAnimtor
+            healthAnimator = healthUI[N].GetComponent<Animator>();
+            healthAnimator.SetBool("health", false); N++; //destoryed healthpoint and shifting focus to next heathpoint.
 
-    private void Start()
-    {
-        healthAnimator = healthUI.GetComponent<Animator>();
-    }
-    public void healthDrop()
-    {
-        healthAnimator.SetBool("health", false);
+            if (N < 3)
+                return false;
+            else
+                return true;
+        }
+        else
+            return true;
     }
 }

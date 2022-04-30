@@ -122,6 +122,11 @@ public class EllenController : MonoBehaviour
     void gotDamaged()
     {
         animator.SetBool("hurt", true);
-        health.healthDrop();
+        bool death = health.healthDrop();
+        if (death)
+        {
+            animator.SetBool("death", death); //if no health points available, dies.
+            //Time.timeScale = 0;
+        }
     }
 }
