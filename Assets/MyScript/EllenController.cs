@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class EllenController : MonoBehaviour
@@ -14,7 +13,6 @@ public class EllenController : MonoBehaviour
     bool crouch = false;
     bool onground = false;
     bool facingRight = true;
-
     //for crouch
     Vector2 size;
     Vector2 offset;
@@ -23,6 +21,8 @@ public class EllenController : MonoBehaviour
     Rigidbody2D rigid;
     CapsuleCollider2D capsuleCollider;
     Health health;
+    [SerializeField]
+    MySceneManager sceneManager;
 
     // Start is called before the first frame update
     void Start()
@@ -126,7 +126,8 @@ public class EllenController : MonoBehaviour
         if (death)
         {
             animator.SetBool("death", death); //if no health points available, dies.
-            //Time.timeScale = 0;
+            //sceneManager.reload();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
