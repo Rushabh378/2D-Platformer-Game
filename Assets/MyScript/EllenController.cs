@@ -127,8 +127,6 @@ public class EllenController : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
             Time.timeScale = 0;
             gameoverPanel.SetActive(true);
-
-            
         }
     }
 }

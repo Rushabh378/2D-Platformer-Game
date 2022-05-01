@@ -7,10 +7,13 @@ public class MySceneManager
 {
     public void reload()
     {
+        if (Time.timeScale == 0)
+            Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void nextLevel()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -14,10 +14,7 @@ public class Health : MonoBehaviour
             healthAnimator = healthUI[N].GetComponent<Animator>();
             healthAnimator.SetBool("health", false); N++; //destoryed healthpoint and shifting focus to next heathpoint.
 
-            if (N < 3)
-                return false;
-            else
-                return true;
+            return false;
         }
         else
             return true;
