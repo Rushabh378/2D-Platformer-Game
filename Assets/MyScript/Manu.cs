@@ -13,4 +13,8 @@ public class Manu : MonoBehaviour
         Debug.Log("quited");
         UnityEditor.EditorApplication.isPlaying = false;
     }
+    public void restart()
+    {
+        sceneManager.reload();
+    }
 }

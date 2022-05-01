@@ -22,7 +22,7 @@ public class EllenController : MonoBehaviour
     Rigidbody2D rigid;
     CapsuleCollider2D capsuleCollider;
     Health health;
-    MySceneManager sceneManager = new MySceneManager();
+    public GameObject gameoverPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -124,8 +124,11 @@ public class EllenController : MonoBehaviour
         if (death)
         {
             animator.SetBool("death", death); //if no health points available, dies.
-            yield return new WaitForSeconds(3.0f);
-            sceneManager.reload();
+            yield return new WaitForSeconds(2.0f);
+            Time.timeScale = 0;
+            gameoverPanel.SetActive(true);
+
+            
         }
     }
 }
