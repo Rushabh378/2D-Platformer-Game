@@ -16,4 +16,8 @@ public class MySceneManager
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void loadlevels()
+    {
+        SceneManager.LoadScene(4);
+    }
 }
