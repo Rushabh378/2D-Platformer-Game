@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+﻿using LevelManagement;
+using UnityEngine;
 
 public class Manu : MonoBehaviour
 {
-    MySceneManager sceneManager = new MySceneManager();
     [SerializeField]
     GameObject levels;
     public void play()
     {
-        sceneManager.nextLevel();
+        MySceneManager.nextLevel();
     }
     public void quit()
     {
@@ -22,6 +22,6 @@ public class Manu : MonoBehaviour
     }
     public void restart()
     {
-        sceneManager.reload();
+        MySceneManager.reload();
     }
 }

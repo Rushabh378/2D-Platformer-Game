@@ -1,23 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MySceneManager
+namespace LevelManagement
 {
-    public void reload()
+    public class MySceneManager
     {
-        if (Time.timeScale == 0)
-            Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    public void nextLevel()
-    {
+        public static void reload()
+        {
+            if (Time.timeScale == 0)
+                Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        public static void nextLevel()
+        {
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-    public void loadlevels()
-    {
-        SceneManager.LoadScene(4);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

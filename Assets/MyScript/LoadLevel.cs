@@ -1,20 +1,34 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-public class LoadLevel : MonoBehaviour
+namespace LevelManagement
 {
-    public Button[] buttons = new Button[3];
-  
-    private void Start()
+    public class LoadLevel : MonoBehaviour
     {
-        buttons[0].onClick.AddListener(() => loadLevel(1));
-        buttons[1].onClick.AddListener(() => loadLevel(2));
-        buttons[2].onClick.AddListener(() => loadLevel(3));
-    }
-    void loadLevel(int level)
-    {
-        SceneManager.LoadScene(level);
-        //Debug.Log(level + " level activated");
+        public string level;
+        Button button;
+        private void Start()
+        {
+            button = GetComponent<Button>();
+            button.onClick.AddListener(() => loadLevel(level));
+        }
+        void loadLevel(string level)
+        {
+            LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(level);
+            switch (levelStatus)
+            {
+                case LevelStatus.locked:
+                    Debug.Log("Level is locked");
+                    break;
+                case LevelStatus.unlocked:
+                    Debug.Log("level is unlocked");
+                    SceneManager.LoadScene(level);
+                    break;
+                case LevelStatus.complete:
+                    Debug.Log("level is complete");
+                    SceneManager.LoadScene(level);
+                    break;
+            }
+        }
     }
 }
