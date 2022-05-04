@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LevelManagement
 {
@@ -34,6 +35,18 @@ namespace LevelManagement
         {
             LevelStatus levelStatus = (LevelStatus)PlayerPrefs.GetInt(level, 0);
             return levelStatus;
+        }
+        public void loadNextLevel(string nextLevel)
+        {
+            
+            //setting current scene status as complete.
+            string currentLevel = SceneManager.GetActiveScene().name;
+            Debug.Log("current scene name: " + currentLevel);
+            setLevelStatus(currentLevel, LevelStatus.complete);
+
+            //defining and loading next level
+            setLevelStatus(nextLevel, LevelStatus.unlocked);
+            SceneManager.LoadScene(nextLevel);
         }
     }
 }

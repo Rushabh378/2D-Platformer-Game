@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using LevelManagement;
 
 public class Teleport : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class Teleport : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            LevelManager.Instance.loadNextLevel(LevelsName.getLevel(2));
         }
     }
 }
