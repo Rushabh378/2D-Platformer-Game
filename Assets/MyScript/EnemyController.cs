@@ -50,4 +50,13 @@ public class EnemyController : MonoBehaviour
         transform.Rotate(0f, 180, 0f);
         facingRight = !facingRight;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("flipper"))
+        {
+            Debug.DrawRay(Detector.transform.position, Detector.transform.right, Color.yellow, sightLength);
+            direction *= -1f;
+            flip();
+        }
+    }
 }

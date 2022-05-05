@@ -46,6 +46,7 @@ namespace LevelManagement
 
             //defining and loading next level
             setLevelStatus(nextLevel, LevelStatus.unlocked);
+            Debug.Log(nextLevel + "is set to " + (int)LevelStatus.unlocked);
             SceneManager.LoadScene(nextLevel);
         }
     }

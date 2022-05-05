@@ -4695,6 +4695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f30fc7720387454b90cc93da91feebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levels: {fileID: 0}
 --- !u!1 &2026886842
 GameObject:
   m_ObjectHideFlags: 0
@@ -5027,6 +5028,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114372244867297088, guid: f0434345aaabb18418b11bdc7cf11346,
+        type: 3}
+      propertyPath: nextLevel
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 1405192755198628656, guid: f0434345aaabb18418b11bdc7cf11346,
         type: 3}
       propertyPath: m_LocalPosition.x

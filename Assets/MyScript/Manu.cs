@@ -11,6 +11,7 @@ public class Manu : MonoBehaviour
     }
     public void quit()
     {
+        PlayerPrefs.DeleteAll();
         Application.Quit();
         Debug.Log("quited");
         UnityEditor.EditorApplication.isPlaying = false;
