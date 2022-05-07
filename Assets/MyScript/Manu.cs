@@ -1,4 +1,5 @@
 ﻿using LevelManagement;
+using AudioManagement;
 using UnityEngine;
 
 public class Manu : MonoBehaviour
@@ -7,6 +8,7 @@ public class Manu : MonoBehaviour
     GameObject levels;
     public void play()
     {
+        AudioManager.Instance.play(SoundType.ButtonClick);
         MySceneManager.nextLevel();
     }
     public void quit()
