@@ -23,13 +23,28 @@ namespace AudioManagement
                 Destroy(gameObject);
             }
         }
+        private void Start()
+        {
+            playMusic(SoundType.GamePlay);
+        }
         public void play(SoundType sound)
         {
             AudioClip audio = getSound(sound);
-            if(audio != null)
+            if (audio != null)
             {
                 AudioSFX.PlayOneShot(audio);
             }
+            else
+                Debug.Log("audio clip is null");
+        }
+        public void playMusic(SoundType sound)
+        {
+            AudioClip audio = getSound(sound);
+
+            if (audio != null)
+                BGAudio.Play();
+            else
+                Debug.Log("audio clip is null");
         }
 
         private AudioClip getSound(SoundType sound)
