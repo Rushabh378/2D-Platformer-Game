@@ -12,6 +12,7 @@ public class EllenController : MonoBehaviour
     bool crouch = false;
     bool onground = false;
     bool facingRight = true;
+    bool notDead = true;
     //for crouch
     Vector2 size;
     Vector2 offset;
@@ -54,7 +55,7 @@ public class EllenController : MonoBehaviour
         }
 
         //jump
-        if (Input.GetButtonDown("Jump") && onground == true)
+        if (Input.GetButtonDown("Jump") && onground == true && notDead)
         {
             rigid.velocity = Vector2.up * jump_force;
             jump = true;
@@ -121,6 +122,7 @@ public class EllenController : MonoBehaviour
         bool death = health.healthDrop();
         if (death)
         {
+            notDead = false;
             animator.SetBool("death", death); //if no health points available, dies.
             yield return new WaitForSeconds(2.0f);
             Time.timeScale = 0;

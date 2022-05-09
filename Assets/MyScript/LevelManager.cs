@@ -7,6 +7,7 @@ namespace LevelManagement
     {
         private static LevelManager instance;
         public static LevelManager Instance { get { return instance; } }
+        public GameObject gameComplete;
         string firstLevel = "Level1";
         private void Awake()
         {
@@ -44,10 +45,15 @@ namespace LevelManagement
             Debug.Log("current scene name: " + currentLevel);
             setLevelStatus(currentLevel, LevelStatus.complete);
 
-            //defining and loading next level
-            setLevelStatus(nextLevel, LevelStatus.unlocked);
-            Debug.Log(nextLevel + "is set to " + (int)LevelStatus.unlocked);
-            SceneManager.LoadScene(nextLevel);
+            if (nextLevel == "Last")
+                gameComplete.SetActive(true); //Debug.Log("you have completed game.");
+            else
+            {
+                //defining and loading next level
+                setLevelStatus(nextLevel, LevelStatus.unlocked);
+                Debug.Log(nextLevel + " is set to " + (int)LevelStatus.unlocked);
+                SceneManager.LoadScene(nextLevel);
+            }
         }
     }
 }
