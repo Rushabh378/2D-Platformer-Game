@@ -42,7 +42,10 @@ namespace AudioManagement
             AudioClip audio = getSound(sound);
 
             if (audio != null)
+            {
+                BGAudio.clip = audio;
                 BGAudio.Play();
+            }
             else
                 Debug.Log("audio clip is null");
         }
@@ -54,6 +57,12 @@ namespace AudioManagement
                 return audio.audio;
             else
                 return null;
+        }
+
+        //elen walking sound
+        public void ellenWalking()
+        {
+            play(SoundType.EllenWalk);
         }
     }
 }

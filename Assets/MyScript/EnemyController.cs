@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -45,7 +44,7 @@ public class EnemyController : MonoBehaviour
         transform.position = position;
         animator.SetFloat("speed", movementSpeed);
     }
-    void flip()
+    private void flip()
     {
         transform.Rotate(0f, 180, 0f);
         facingRight = !facingRight;

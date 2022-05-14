@@ -111,7 +111,7 @@ public class EllenController : MonoBehaviour
         //Debug.Log("collision exited");
         animator.SetBool("hurt", false);
     }
-    void flip()
+    private void flip()
     {
         transform.Rotate(0f, 180, 0f);
         facingRight = !facingRight;

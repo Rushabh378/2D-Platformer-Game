@@ -15,5 +15,6 @@ namespace AudioManagement
     {
         ButtonClick,
         GamePlay,
+        EllenWalk,
     }
 }

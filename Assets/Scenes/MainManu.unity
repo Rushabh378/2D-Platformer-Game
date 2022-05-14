@@ -1270,6 +1270,12 @@ MonoBehaviour:
   - soundType: 0
     audio: {fileID: 8300000, guid: df6d1af64fdebb04d80a54b27b720509, type: 3}
     volume: 1
+  - soundType: 2
+    audio: {fileID: 8300000, guid: 234b586e812e70b419affbe33e30dcfe, type: 3}
+    volume: 1
+  - soundType: 1
+    audio: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
+    volume: 1
   BGAudio: {fileID: 1810769921}
   AudioSFX: {fileID: 1488375837}
 --- !u!4 &888345796
@@ -2858,8 +2864,9 @@ AudioSource:
   m_GameObject: {fileID: 1810769919}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243771002084737210, guid: 74cb2eead3628fa47a369c51a45d99a1,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2867,7 +2874,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 79
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
