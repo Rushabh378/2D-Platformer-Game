@@ -1266,6 +1266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fc45801bbb9764a82989e7f7ee1ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGAudio: {fileID: 1810769921}
+  AudioSFX: {fileID: 1488375837}
   sounds:
   - soundType: 0
     audio: {fileID: 8300000, guid: df6d1af64fdebb04d80a54b27b720509, type: 3}
@@ -1276,8 +1278,12 @@ MonoBehaviour:
   - soundType: 1
     audio: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
     volume: 1
-  BGAudio: {fileID: 1810769921}
-  AudioSFX: {fileID: 1488375837}
+  - soundType: 3
+    audio: {fileID: 8300000, guid: e5cb0976ee7cf93489107ede5175519b, type: 3}
+    volume: 1
+  - soundType: 4
+    audio: {fileID: 8300000, guid: ea217dc637f73b649a2866febb99c4a2, type: 3}
+    volume: 1
 --- !u!4 &888345796
 Transform:
   m_ObjectHideFlags: 0
@@ -2868,7 +2874,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

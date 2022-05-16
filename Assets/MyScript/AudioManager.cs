@@ -8,9 +8,9 @@ namespace AudioManagement
     {
         private static AudioManager instance;
         public static AudioManager Instance { get { return instance; } }
-        public Sounds[] sounds;
         public AudioSource BGAudio;
         public AudioSource AudioSFX;
+        public Sounds[] sounds;
         private void Awake()
         {
             if(instance == null)
@@ -44,6 +44,7 @@ namespace AudioManagement
             if (audio != null)
             {
                 BGAudio.clip = audio;
+                BGAudio.loop = true;
                 BGAudio.Play();
             }
             else

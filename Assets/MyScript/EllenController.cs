@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using AudioManagement;
 public class EllenController : MonoBehaviour
 {
     float movementSpeed;
@@ -58,6 +58,7 @@ public class EllenController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && onground == true && notDead)
         {
             rigid.velocity = Vector2.up * jump_force;
+            AudioManager.Instance.play(SoundType.jumping);
             jump = true;
             onground = false;
         }
@@ -96,7 +97,7 @@ public class EllenController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            //Debug.Log("collided ground");
+            AudioManager.Instance.play(SoundType.landing);
             jump = false;
             onground = true;
         }
@@ -115,6 +116,10 @@ public class EllenController : MonoBehaviour
     {
         transform.Rotate(0f, 180, 0f);
         facingRight = !facingRight;
+    }
+    public void runningAudio()
+    {
+        AudioManager.Instance.play(SoundType.EllenWalk);
     }
     IEnumerator GotDamaged()
     {

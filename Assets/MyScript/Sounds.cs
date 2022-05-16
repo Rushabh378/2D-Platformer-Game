@@ -16,5 +16,7 @@ namespace AudioManagement
         ButtonClick,
         GamePlay,
         EllenWalk,
+        jumping,landing,
+
     }
 }
