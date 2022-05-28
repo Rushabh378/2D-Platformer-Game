@@ -106,11 +106,16 @@ public class EllenController : MonoBehaviour
             //Debug.Log("ellen fot damaged.");
             StartCoroutine(GotDamaged());
         }
+        if (collision.gameObject.CompareTag("pushable"))
+        {
+            animator.SetBool("push", true);
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         //Debug.Log("collision exited");
         animator.SetBool("hurt", false);
+        animator.SetBool("push", false);
     }
     private void flip()
     {
