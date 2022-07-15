@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -22,10 +21,18 @@ public class EnemyController : MonoBehaviour
         RaycastHit2D hit2D = Physics2D.Raycast(Detector.transform.position, Detector.transform.right, sightLength);
         if (hit2D)
         {
-            Debug.DrawRay(Detector.transform.position, Detector.transform.right, Color.yellow, sightLength);
-            //Debug.Log("chomper cought something");
-            direction *= -1f;
-            flip();
+            if(hit2D.collider.name == "Ellen")
+            {
+                Debug.DrawRay(Detector.transform.position, Detector.transform.right, Color.red, sightLength);
+                movementSpeed = 3;
+            }
+            else
+            {
+                Debug.DrawRay(Detector.transform.position, Detector.transform.right, Color.yellow, sightLength);
+                direction *= -1f;
+                flip();
+            }
+            
         }
         else
         {
@@ -37,9 +44,18 @@ public class EnemyController : MonoBehaviour
         transform.position = position;
         animator.SetFloat("speed", movementSpeed);
     }
-    void flip()
+    private void flip()
     {
         transform.Rotate(0f, 180, 0f);
         facingRight = !facingRight;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("flipper"))
+        {
+            Debug.DrawRay(Detector.transform.position, Detector.transform.right, Color.yellow, sightLength);
+            direction *= -1f;
+            flip();
+        }
     }
 }

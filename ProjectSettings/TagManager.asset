@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Collectable
   - Enemy
+  - flipper
+  - pushable
   layers:
   - Default
   - TransparentFX

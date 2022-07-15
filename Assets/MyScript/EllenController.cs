@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-
+﻿using UnityEngine;
+using System.Collections;
+using AudioManagement;
 public class EllenController : MonoBehaviour
 {
     float movementSpeed;
@@ -14,7 +12,7 @@ public class EllenController : MonoBehaviour
     bool crouch = false;
     bool onground = false;
     bool facingRight = true;
-
+    bool notDead = true;
     //for crouch
     Vector2 size;
     Vector2 offset;
@@ -22,8 +20,8 @@ public class EllenController : MonoBehaviour
     Animator animator;
     Rigidbody2D rigid;
     CapsuleCollider2D capsuleCollider;
-    public TextMeshProUGUI text;
-    //public TextMeshPro text;
+    Health health;
+    public GameObject gameoverPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +29,8 @@ public class EllenController : MonoBehaviour
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-        //text.enabled = false;
+        health = GetComponent<Health>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -56,12 +53,12 @@ public class EllenController : MonoBehaviour
                 flip();
             }
         }
-            
 
         //jump
-        if (Input.GetButtonDown("Jump") && onground == true)
+        if (Input.GetButtonDown("Jump") && onground == true && notDead)
         {
             rigid.velocity = Vector2.up * jump_force;
+            AudioManager.Instance.play(SoundType.jumping);
             jump = true;
             onground = false;
         }
@@ -85,7 +82,6 @@ public class EllenController : MonoBehaviour
             capsuleCollider.size = size;
             capsuleCollider.offset = offset;
         }
-
         animator.SetBool("crouch", crouch);
     }
     private void FixedUpdate()
@@ -101,26 +97,46 @@ public class EllenController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            //Debug.Log("collided ground");
+            AudioManager.Instance.play(SoundType.landing);
             jump = false;
             onground = true;
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.GetComponent<EnemyController>() == true)
         {
-            getDamage();
+            //Debug.Log("ellen fot damaged.");
+            StartCoroutine(GotDamaged());
+        }
+        if (collision.gameObject.CompareTag("pushable"))
+        {
+            animator.SetBool("push", true);
         }
     }
-    void flip()
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //Debug.Log("collision exited");
+        animator.SetBool("hurt", false);
+        animator.SetBool("push", false);
+    }
+    private void flip()
     {
         transform.Rotate(0f, 180, 0f);
         facingRight = !facingRight;
     }
-
-    void getDamage()
+    public void runningAudio()
     {
-        text.enabled = true;
+        AudioManager.Instance.play(SoundType.EllenWalk);
+    }
+    IEnumerator GotDamaged()
+    {
+        animator.SetBool("hurt", true);
+        bool death = health.healthDrop();
+        if (death)
+        {
+            notDead = false;
+            animator.SetBool("death", death); //if no health points available, dies.
+            yield return new WaitForSeconds(2.0f);
+            Time.timeScale = 0;
+            gameoverPanel.SetActive(true);
+        }
     }
 }
